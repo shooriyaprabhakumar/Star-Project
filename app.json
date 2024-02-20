@@ -1,0 +1,22 @@
+{
+  "sourceForRawZone":{
+    "source_bucket":"shooriyaprabhaa17-landingbucket-batch01",
+    "destination_bucket":"shooriyaprabhaa17-rawbucket-batch01",
+    "source_folder_key":"Data/",
+    "destination_folder_key":"Dataset/"
+
+  },
+  "source": [
+    "s3://shooriyaprabhaa17-rawbucket-batch01/Actives.parquet",
+    "s3://shooriyaprabhaa17-rawbucket-batch01/Viewership.parquet"
+  ],
+  "destination": "s3://shooriyaprabhaa17-stagingbucket-batch01/Result/",
+  "transformations": {
+    "advertising_id": "sha2",
+    "user_id": "sha2",
+    "user_longitude": "convert to decimal with 7 precision",
+    "user_latitude": "convert to decimal with 7 precision",
+    "location_source": "Convert to a comma-separated string"
+  },
+  "partitions":["month","date"]
+}
